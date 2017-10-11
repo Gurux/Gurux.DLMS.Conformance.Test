@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B77CB00B-C241-4175-806A-E95345E859C9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gurux.DLMS.Conformance.Test</RootNamespace>
+    <AssemblyName>Gurux.DLMS.Conformance.Test</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Gurux.Common, Version=8.1.1709.2601, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Gurux.Common.8.1.1709.2601\lib\portable-win+net35\Gurux.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Gurux.DLMS, Version=8.5.1710.1101, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Gurux.DLMS.8.5.1710.1101\lib\portable-win+net35\Gurux.DLMS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Gurux.Net, Version=8.1.1710.1001, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Gurux.Net.8.1.1710.1001\lib\portable-win+net35\Gurux.Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Gurux.Serial, Version=8.1.1710.1001, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Gurux.Serial.8.1.1710.1001\lib\portable-win+net35\Gurux.Serial.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GXDLMSReader.cs" />
+    <Compile Include="GXOutput.cs" />
+    <Compile Include="GXSettings.cs" />
+    <Compile Include="GXTarget.cs" />
+    <Compile Include="GXTests.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tests\Objects\Clock.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tests\Objects\Data.xml" />
+    <EmbeddedResource Include="Tests\Objects\Register.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Tests\Objects\ActionSchedule.xml" />
+    <EmbeddedResource Include="Tests\Objects\ActivityCalendar.xml" />
+    <EmbeddedResource Include="Tests\Objects\AutoAnswer.xml" />
+    <EmbeddedResource Include="Tests\Objects\AutoConnect.xml" />
+    <EmbeddedResource Include="Tests\Objects\DemandRegister.xml" />
+    <EmbeddedResource Include="Tests\Objects\IecHdlcSetup.xml" />
+    <EmbeddedResource Include="Tests\Objects\IecLocalPortSetup.xml" />
+    <EmbeddedResource Include="Tests\Objects\IP4Setup.xml" />
+    <EmbeddedResource Include="Tests\Objects\MacAddressSetup.xml" />
+    <EmbeddedResource Include="Tests\Objects\ModemConfiguration.xml" />
+    <EmbeddedResource Include="Tests\Objects\PushSetup.xml" />
+    <EmbeddedResource Include="Tests\Objects\RegisterMonitor.xml" />
+    <EmbeddedResource Include="Tests\Objects\SapAssignment.xml" />
+    <EmbeddedResource Include="Tests\Objects\ScriptTable.xml" />
+    <EmbeddedResource Include="Tests\Objects\SpecialDaysTable.xml" />
+    <EmbeddedResource Include="Tests\Objects\TcpUdpSetup.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Tests\LN\ConnectLow_InvalidPW.xml" />
+    <EmbeddedResource Include="Tests\LN\ConnectNone.xml" />
+    <EmbeddedResource Include="Tests\LN\DlmsVersionTooLow.xml" />
+    <Content Include="Tests\LN\ImageUpdate.xml" />
+    <EmbeddedResource Include="Tests\LN\IncompatibleConformance.xml" />
+    <EmbeddedResource Include="Tests\LN\LogicalDeviceName.xml" />
+    <EmbeddedResource Include="Tests\LN\PduSizeTooShort.xml" />
+    <EmbeddedResource Include="Tests\LN\Snrm.xml" />
+    <EmbeddedResource Include="Tests\SN\ConnectLow_InvalidPW.xml" />
+    <EmbeddedResource Include="Tests\SN\ConnectNone.xml" />
+    <EmbeddedResource Include="Tests\SN\DlmsVersionTooLow.xml" />
+    <EmbeddedResource Include="Tests\SN\IncompatibleConformance.xml" />
+    <EmbeddedResource Include="Tests\SN\LogicalDeviceName.xml" />
+    <EmbeddedResource Include="Tests\SN\PduSizeTooShort.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

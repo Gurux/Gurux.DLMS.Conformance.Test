@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Connect to the LN meter and close connection.-->
+<Messages>
+  <Snrm>
+    <MaxInfoRX Value="62" />
+    <MaxInfoTX Value="128" />
+  </Snrm>
+  <Ua>
+    <MaxInfoRX Value="128" />
+    <MaxInfoTX Value="62" />
+    <WindowSizeRX Value="1" />
+    <WindowSizeTX Value="1" />
+  </Ua>
+  <AssociationRequest>
+    <ApplicationContextName Value="LN" />
+    <SenderACSERequirements Value="1" />
+    <MechanismName Value="None" />
+    <InitiateRequest>
+      <ProposedDlmsVersionNumber Value="6" />
+      <ProposedConformance>
+        <ConformanceBit Name="SelectiveAccess" />
+        <ConformanceBit Name="Set" />
+        <ConformanceBit Name="Get" />
+        <ConformanceBit Name="MultipleReferences" />
+        <ConformanceBit Name="BlockTransferWithAction" />
+        <ConformanceBit Name="BlockTransferWithSetOrWrite" />
+        <ConformanceBit Name="BlockTransferWithGetOrRead" />
+      </ProposedConformance>
+      <ProposedMaxPduSize Value="1024" />
+    </InitiateRequest>
+  </AssociationRequest>
+  <AssociationResponse>
+    <ApplicationContextName Value="LN" />
+    <AssociationResult Value="0" />
+    <ResultSourceDiagnostic>
+      <ACSEServiceUser Value="0" />
+    </ResultSourceDiagnostic>
+    <InitiateResponse>
+      <NegotiatedDlmsVersionNumber Value="6" />
+      <NegotiatedConformance>
+        <ConformanceBit Name="SelectiveAccess" />
+        <ConformanceBit Name="Set" />
+        <ConformanceBit Name="Get" />
+        <ConformanceBit Name="MultipleReferences" />
+        <ConformanceBit Name="BlockTransferWithAction" />
+        <ConformanceBit Name="BlockTransferWithSetOrWrite" />
+        <ConformanceBit Name="BlockTransferWithGetOrRead" />
+      </NegotiatedConformance>
+      <NegotiatedMaxPduSize Value="1024" />
+      <VaaName Value="7" />
+    </InitiateResponse>
+  </AssociationResponse>
+  <ReleaseRequest>
+    <Reason Value="Normal" />
+    <InitiateRequest>
+      <ProposedDlmsVersionNumber Value="6" />
+      <ProposedConformance>
+        <ConformanceBit Name="SelectiveAccess" />
+        <ConformanceBit Name="Set" />
+        <ConformanceBit Name="Get" />
+        <ConformanceBit Name="MultipleReferences" />
+        <ConformanceBit Name="BlockTransferWithAction" />
+        <ConformanceBit Name="BlockTransferWithSetOrWrite" />
+        <ConformanceBit Name="BlockTransferWithGetOrRead" />
+        <ConformanceBit Name="GeneralProtection" />
+      </ProposedConformance>
+      <ProposedMaxPduSize Value="1025" />
+    </InitiateRequest>
+  </ReleaseRequest>
+  <ReleaseResponse>
+    <Reason Value="Normal" />
+  </ReleaseResponse>
+  <DisconnectRequest>
+  </DisconnectRequest>
+  <Ua>
+    <MaxInfoRX Value="128" />
+    <MaxInfoTX Value="62" />
+    <WindowSizeRX Value="1" />
+    <WindowSizeTX Value="1" />
+  </Ua>
+</Messages>

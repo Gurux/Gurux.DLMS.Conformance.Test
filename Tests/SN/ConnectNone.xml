@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Messages>
+  <Snrm>
+    <MaxInfoRX Value="62" />
+    <MaxInfoTX Value="128" />
+    <WindowSizeRX Value="1" />
+    <WindowSizeTX Value="1" />
+  </Snrm>
+  <Ua>
+    <MaxInfoRX Value="128" />
+    <MaxInfoTX Value="62" />
+    <WindowSizeRX Value="1" />
+    <WindowSizeTX Value="1" />
+  </Ua>
+  <AssociationRequest>
+    <ApplicationContextName Value="SN" />
+    <InitiateRequest>
+      <ProposedDlmsVersionNumber Value="6" />
+      <ProposedConformance>
+        <ConformanceBit Name="Read" />
+      </ProposedConformance>
+      <ProposedMaxPduSize Value="1024" />
+    </InitiateRequest>
+  </AssociationRequest>
+  <AssociationResponse>
+    <ApplicationContextName Value="SN" />
+    <AssociationResult Value="0" />
+    <ResultSourceDiagnostic>
+      <ACSEServiceUser Value="0" />
+    </ResultSourceDiagnostic>
+    <InitiateResponse>
+      <NegotiatedQualityOfService Value="00" />
+      <NegotiatedDlmsVersionNumber Value="6" />
+      <NegotiatedConformance>
+        <ConformanceBit Name="Read" />
+      </NegotiatedConformance>
+      <NegotiatedMaxPduSize Value="1024" />
+      <VaaName Value="64000" />
+    </InitiateResponse>
+  </AssociationResponse>
+  <ReleaseRequest>
+    <Reason Value="Normal" />
+    <InitiateRequest>
+      <ProposedDlmsVersionNumber Value="6" />
+      <ProposedConformance>
+        <ConformanceBit Name="Read" />
+      </ProposedConformance>
+      <ProposedMaxPduSize Value="1024" />
+    </InitiateRequest>
+  </ReleaseRequest>
+  <ReleaseResponse>
+    <Reason Value="Normal" />
+  </ReleaseResponse>
+  <DisconnectRequest>
+  </DisconnectRequest>
+  <Ua>
+    <MaxInfoRX Value="128" />
+    <MaxInfoTX Value="62" />
+    <WindowSizeRX Value="1" />
+    <WindowSizeTX Value="1" />
+  </Ua>
+</Messages>

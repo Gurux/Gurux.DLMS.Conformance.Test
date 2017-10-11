@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Connect to the LN meter and close connection.-->
+<Messages>
+  <Snrm>
+    <MaxInfoRX Value="40" />
+    <MaxInfoTX Value="42" />
+  </Snrm>
+  <Ua>
+    <MaxInfoRX Value="42" />
+    <MaxInfoTX Value="40" />
+    <WindowSizeRX Value="1" />
+    <WindowSizeTX Value="1" />
+  </Ua>
+</Messages>

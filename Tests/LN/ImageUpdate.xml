@@ -1,0 +1,497 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Update new Firmware to the meter.-->
+<Messages>
+  <GetRequest>
+    <GetRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <AttributeDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <AttributeId Value="5" />
+      </AttributeDescriptor>
+    </GetRequestNormal>
+  </GetRequest>
+  <GetResponse>
+    <GetResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result>
+        <Data>
+          <Boolean Value="1" />
+        </Data>
+      </Result>
+    </GetResponseNormal>
+  </GetResponse>
+  <GetRequest>
+    <GetRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <AttributeDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <AttributeId Value="2" />
+      </AttributeDescriptor>
+    </GetRequestNormal>
+  </GetRequest>
+  <GetResponse>
+    <GetResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result>
+        <Data>
+          <UInt32 Value="200" />
+        </Data>
+      </Result>
+    </GetResponseNormal>
+  </GetResponse>
+  <ActionRequest>
+    <ActionRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <MethodDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <MethodId Value="1" />
+      </MethodDescriptor>
+      <MethodInvocationParameters>
+        <Structure Qty="2" >
+          <OctetString Value="477572757820465720312E322E33" />
+          <UInt32 Value="1024" />
+        </Structure>
+      </MethodInvocationParameters>
+    </ActionRequestNormal>
+  </ActionRequest>
+  <ActionResponse>
+    <ActionResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result Value="Success" />
+      <ReturnParameters>
+        <Data></Data>
+      </ReturnParameters>
+    </ActionResponseNormal>
+  </ActionResponse>
+  <GetRequest>
+    <GetRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <AttributeDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <AttributeId Value="3" />
+      </AttributeDescriptor>
+    </GetRequestNormal>
+  </GetRequest>
+  <GetResponse>
+    <GetResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result>
+        <Data>
+          <BitString Value="000000" />
+        </Data>
+      </Result>
+    </GetResponseNormal>
+  </GetResponse>
+  <ActionRequest>
+    <ActionRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <MethodDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <MethodId Value="2" />
+      </MethodDescriptor>
+      <MethodInvocationParameters>
+        <Structure Qty="2" >
+          <UInt32 Value="0" />
+          <OctetString Value="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" />
+        </Structure>
+      </MethodInvocationParameters>
+    </ActionRequestNormal>
+  </ActionRequest>
+  <ActionResponse>
+    <ActionResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result Value="Success" />
+      <ReturnParameters>
+        <Data>
+        </Data>
+      </ReturnParameters>
+    </ActionResponseNormal>
+  </ActionResponse>
+  <GetRequest>
+    <GetRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <AttributeDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <AttributeId Value="3" />
+      </AttributeDescriptor>
+    </GetRequestNormal>
+  </GetRequest>
+  <GetResponse>
+    <GetResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result>
+        <Data>
+          <BitString Value="100000" />
+        </Data>
+      </Result>
+    </GetResponseNormal>
+  </GetResponse>
+  <ActionRequest>
+    <ActionRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <MethodDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <MethodId Value="2" />
+      </MethodDescriptor>
+      <MethodInvocationParameters>
+        <Structure Qty="2" >
+          <UInt32 Value="1" />
+          <OctetString Value="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" />
+        </Structure>
+      </MethodInvocationParameters>
+    </ActionRequestNormal>
+  </ActionRequest>
+  <ActionResponse>
+    <ActionResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result Value="Success" />
+      <ReturnParameters>
+        <Data>
+        </Data>
+      </ReturnParameters>
+    </ActionResponseNormal>
+  </ActionResponse>
+  <GetRequest>
+    <GetRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <AttributeDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <AttributeId Value="3" />
+      </AttributeDescriptor>
+    </GetRequestNormal>
+  </GetRequest>
+  <GetResponse>
+    <GetResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result>
+        <Data>
+          <BitString Value="110000" />
+        </Data>
+      </Result>
+    </GetResponseNormal>
+  </GetResponse>
+  <ActionRequest>
+    <ActionRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <MethodDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <MethodId Value="2" />
+      </MethodDescriptor>
+      <MethodInvocationParameters>
+        <Structure Qty="2" >
+          <UInt32 Value="2" />
+          <OctetString Value="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" />
+        </Structure>
+      </MethodInvocationParameters>
+    </ActionRequestNormal>
+  </ActionRequest>
+  <ActionResponse>
+    <ActionResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result Value="Success" />
+      <ReturnParameters>
+        <Data>
+        </Data>
+      </ReturnParameters>
+    </ActionResponseNormal>
+  </ActionResponse>
+  <GetRequest>
+    <GetRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <AttributeDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <AttributeId Value="3" />
+      </AttributeDescriptor>
+    </GetRequestNormal>
+  </GetRequest>
+  <GetResponse>
+    <GetResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result>
+        <Data>
+          <BitString Value="111000" />
+        </Data>
+      </Result>
+    </GetResponseNormal>
+  </GetResponse>
+  <ActionRequest>
+    <ActionRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <MethodDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <MethodId Value="2" />
+      </MethodDescriptor>
+      <MethodInvocationParameters>
+        <Structure Qty="2" >
+          <UInt32 Value="3" />
+          <OctetString Value="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" />
+        </Structure>
+      </MethodInvocationParameters>
+    </ActionRequestNormal>
+  </ActionRequest>
+  <ActionResponse>
+    <ActionResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result Value="Success" />
+      <ReturnParameters>
+        <Data>
+        </Data>
+      </ReturnParameters>
+    </ActionResponseNormal>
+  </ActionResponse>
+  <GetRequest>
+    <GetRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <AttributeDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <AttributeId Value="3" />
+      </AttributeDescriptor>
+    </GetRequestNormal>
+  </GetRequest>
+  <GetResponse>
+    <GetResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result>
+        <Data>
+          <BitString Value="111100" />
+        </Data>
+      </Result>
+    </GetResponseNormal>
+  </GetResponse>
+  <ActionRequest>
+    <ActionRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <MethodDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <MethodId Value="2" />
+      </MethodDescriptor>
+      <MethodInvocationParameters>
+        <Structure Qty="2" >
+          <UInt32 Value="4" />
+          <OctetString Value="0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000" />
+        </Structure>
+      </MethodInvocationParameters>
+    </ActionRequestNormal>
+  </ActionRequest>
+  <ActionResponse>
+    <ActionResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result Value="Success" />
+      <ReturnParameters>
+        <Data>
+        </Data>
+      </ReturnParameters>
+    </ActionResponseNormal>
+  </ActionResponse>
+  <GetRequest>
+    <GetRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <AttributeDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <AttributeId Value="3" />
+      </AttributeDescriptor>
+    </GetRequestNormal>
+  </GetRequest>
+  <GetResponse>
+    <GetResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result>
+        <Data>
+          <BitString Value="111110" />
+        </Data>
+      </Result>
+    </GetResponseNormal>
+  </GetResponse>
+  <ActionRequest>
+    <ActionRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <MethodDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <MethodId Value="2" />
+      </MethodDescriptor>
+      <MethodInvocationParameters>
+        <Structure Qty="2" >
+          <UInt32 Value="5" />
+          <OctetString Value="000000000000000000000000000000000000000000000000" />
+        </Structure>
+      </MethodInvocationParameters>
+    </ActionRequestNormal>
+  </ActionRequest>
+  <ActionResponse>
+    <ActionResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result Value="Success" />
+      <ReturnParameters>
+        <Data>
+        </Data>
+      </ReturnParameters>
+    </ActionResponseNormal>
+  </ActionResponse>
+  <GetRequest>
+    <GetRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <AttributeDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <AttributeId Value="3" />
+      </AttributeDescriptor>
+    </GetRequestNormal>
+  </GetRequest>
+  <GetResponse>
+    <GetResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result>
+        <Data>
+          <BitString Value="111111" />
+        </Data>
+      </Result>
+    </GetResponseNormal>
+  </GetResponse>
+  <ActionRequest>
+    <ActionRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <MethodDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <MethodId Value="3" />
+      </MethodDescriptor>
+      <MethodInvocationParameters>
+        <Int8 Value="0" />
+      </MethodInvocationParameters>
+    </ActionRequestNormal>
+  </ActionRequest>
+  <ActionResponse>
+    <ActionResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result Value="Success" />
+      <ReturnParameters>
+        <Data>
+        </Data>
+      </ReturnParameters>
+    </ActionResponseNormal>
+  </ActionResponse>
+  <GetRequest>
+    <GetRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <AttributeDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <AttributeId Value="7" />
+      </AttributeDescriptor>
+    </GetRequestNormal>
+  </GetRequest>
+  <GetResponse>
+    <GetResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result>
+        <Data>
+          <Array Qty="1" >
+            <Structure Qty="3" >
+              <UInt32 Value="1024" />
+              <OctetString Value="477572757820465720312E322E33" />
+              <OctetString Value="" />
+            </Structure>
+          </Array>
+        </Data>
+      </Result>
+    </GetResponseNormal>
+  </GetResponse>
+  <GetRequest>
+    <GetRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <AttributeDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <AttributeId Value="6" />
+      </AttributeDescriptor>
+    </GetRequestNormal>
+  </GetRequest>
+  <GetResponse>
+    <GetResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result>
+        <Data>
+          <Enum Value="3" />
+        </Data>
+      </Result>
+    </GetResponseNormal>
+  </GetResponse>
+  <ActionRequest>
+    <ActionRequestNormal>
+      <InvokeIdAndPriority Value="193" />
+      <MethodDescriptor>
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
+        <MethodId Value="4" />
+      </MethodDescriptor>
+      <MethodInvocationParameters>
+        <Int8 Value="0" />
+      </MethodInvocationParameters>
+    </ActionRequestNormal>
+  </ActionRequest>
+  <ActionResponse>
+    <ActionResponseNormal>
+      <InvokeIdAndPriority Value="193" />
+      <Result Value="Success" />
+      <ReturnParameters>
+        <Data>
+        </Data>
+      </ReturnParameters>
+    </ActionResponseNormal>
+  </ActionResponse>
+</Messages>

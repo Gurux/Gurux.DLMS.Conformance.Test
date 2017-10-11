@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Messages>
+  <AssociationRequest>
+    <ApplicationContextName Value="SN" />
+    <InitiateRequest>
+      <ProposedDlmsVersionNumber Value="6" />
+      <ProposedConformance>
+      </ProposedConformance>
+      <ProposedMaxPduSize Value="65535" />
+    </InitiateRequest>
+  </AssociationRequest>
+  <AssociationResponse>
+    <ApplicationContextName Value="SN" />
+    <AssociationResult Value="1" />
+    <ResultSourceDiagnostic>
+      <ACSEServiceUser Value="1" />
+    </ResultSourceDiagnostic>
+    <ConfirmedServiceError>
+      <Service Value="1" />
+      <ServiceError>
+        <Initiate Value="IncompatibleConformance" />
+      </ServiceError>
+    </ConfirmedServiceError>
+  </AssociationResponse>
+</Messages>

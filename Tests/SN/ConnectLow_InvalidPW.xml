@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Connect to the LN meter with wrong password.-->
+<Messages>
+  <AssociationRequest>
+    <ApplicationContextName Value="SN" />
+    <SenderACSERequirements Value="1" />
+    <MechanismName Value="Low" />
+    <CallingAuthentication Value="31" />
+    <InitiateRequest>
+      <ProposedDlmsVersionNumber Value="6" />
+      <ProposedConformance>
+        <ConformanceBit Name="Read" />
+      </ProposedConformance>
+      <ProposedMaxPduSize Value="64" />
+    </InitiateRequest>
+  </AssociationRequest>
+  <AssociationResponse>
+    <ApplicationContextName Value="SN" />
+    <AssociationResult Value="1" />
+    <ResultSourceDiagnostic>
+      <ACSEServiceUser Value="13" />
+    </ResultSourceDiagnostic>
+    <InitiateResponse>
+      <NegotiatedQualityOfService Value="00" />
+      <NegotiatedDlmsVersionNumber Value="6" />
+      <NegotiatedConformance>
+        <ConformanceBit Name="Read" />
+      </NegotiatedConformance>
+      <NegotiatedMaxPduSize Value="64" />
+      <VaaName Value="64000" />
+    </InitiateResponse>
+  </AssociationResponse>
+</Messages>
