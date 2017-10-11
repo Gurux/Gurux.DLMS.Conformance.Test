@@ -68,7 +68,7 @@
     <ManifestKeyFile>Gurux.DLMS.Conformance.Test_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Gurux.Common, Version=8.1.1709.2601, Culture=neutral, processorArchitecture=MSIL">
