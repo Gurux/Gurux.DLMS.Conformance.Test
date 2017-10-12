@@ -110,9 +110,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Gurux.DLMS.Conformance.Test_TemporaryKey.pfx" />
     <None Include="packages.config" />
-    <None Include="Properties\app.manifest" />
+    <None Include="Properties\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Tests\Objects\Clock.xml" />
