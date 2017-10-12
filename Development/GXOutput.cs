@@ -86,12 +86,6 @@ namespace Gurux.DLMS.Conformance.Test
             }
             Stream stream = File.Open(file, FileMode.Create);
             writer = new HtmlTextWriter(new StreamWriter(stream));
-            string classValue = "ClassName";
-            string urlValue = "http://www.gurux.org/";
-            // The important part:
-            writer.AddAttribute(HtmlTextWriterAttribute.Class, classValue);
-            writer.RenderBeginTag(HtmlTextWriterTag.Div);
-
             writer.Write("<table width=\"100%\">");
             writer.Write("<tr>");
             writer.Write("<td><center><h1>Gurux Conformance Test Report</h1></center></td>");
