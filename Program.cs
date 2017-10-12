@@ -34,8 +34,10 @@
 
 using Gurux.Net;
 using Gurux.Serial;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Deployment.Application;
 using System.Diagnostics;
 
 namespace Gurux.DLMS.Conformance.Test
@@ -44,17 +46,28 @@ namespace Gurux.DLMS.Conformance.Test
     {
         static int Main(string[] args)
         {
+            SetAddRemoveProgramsIcon();
             GXOutput ouput = new Test.GXOutput();
             GXSettings settings = new GXSettings();
             List<KeyValuePair<GXDLMSXmlPdu, List<string>>> differences = new List<KeyValuePair<GXDLMSXmlPdu, List<string>>>();
             try
             {
-                ////////////////////////////////////////
-                //Handle command line parameters.
-                int ret = GXSettings.GetParameters(args, settings);
-                if (ret != 0)
+                if (args.Length == 0)
                 {
-                    return ret;
+                    GXProperties dlg = new GXProperties(settings);
+                    if (dlg.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                    {
+                        return 0;
+                    }
+                }
+                else
+                {
+                    //Handle command line parameters.
+                    int ret = GXSettings.GetParameters(args, settings);
+                    if (ret != 0)
+                    {
+                        return ret;
+                    }
                 }
                 ////////////////////////////////////////
                 //Check media connection settings.
@@ -87,8 +100,11 @@ namespace Gurux.DLMS.Conformance.Test
             }
             try
             {
-                ouput.writer.Write("<h2>Initialization tests:</h2>");
-                GXTests.Init(settings, ouput);
+                if ((settings.tests & ConformanceTest.Init) != 0)
+                {
+                    ouput.writer.Write("<h2>Initialization tests:</h2>");
+                    GXTests.Init(settings, ouput);
+                }
             }
             catch (Exception ex)
             {
@@ -121,6 +137,37 @@ namespace Gurux.DLMS.Conformance.Test
             ouput.writer.Flush();
             Process.Start(ouput.GetName());
             return 0;
+        }
+
+        /// <summary>
+        /// Set the icon in add/remove programs.
+        /// </summary>
+        private static void SetAddRemoveProgramsIcon()
+        {
+            // only run if clickonce deployed, on first run only
+            if (!System.Diagnostics.Debugger.IsAttached && ApplicationDeployment.IsNetworkDeployed
+            && ApplicationDeployment.CurrentDeployment.IsFirstRun)
+            {
+                try
+                {
+                    string icon = string.Format("{0},0", System.Reflection.Assembly.GetExecutingAssembly().Location);
+                    RegistryKey myUninstallKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Uninstall");
+                    string[] mySubKeyNames = myUninstallKey.GetSubKeyNames();
+                    for (int i = 0; i < mySubKeyNames.Length; i++)
+                    {
+                        RegistryKey myKey = myUninstallKey.OpenSubKey(mySubKeyNames[i], true);
+                        object myValue = myKey.GetValue("DisplayName");
+                        if (myValue != null && myValue.ToString() == "GXDLMSDirector")
+                        {
+                            myKey.SetValue("DisplayIcon", icon);
+                            break;
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
         }
     }
 }

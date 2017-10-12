@@ -59,5 +59,32 @@ namespace Gurux.DLMS.Conformance.Test.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gurux DLMS Conformance Test.
+        /// </summary>
+        internal static string CTT {
+            get {
+                return ResourceManager.GetString("CTT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device Manufacturer settings are not present. Do you want to install them online from Gurux Web?.
+        /// </summary>
+        internal static string InstallManufacturersOnlineTxt {
+            get {
+                return ResourceManager.GetString("InstallManufacturersOnlineTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid ASCII characters..
+        /// </summary>
+        internal static string InvalidASCII {
+            get {
+                return ResourceManager.GetString("InvalidASCII", resourceCulture);
+            }
+        }
     }
 }

@@ -64,6 +64,11 @@ namespace Gurux.DLMS.Conformance.Test
 
     public class GXSettings
     {
+        /// <summary>
+        /// Wait time.
+        /// </summary>
+        public int WaitTime = 5000;
+
         public IGXMedia media = null;
         public TraceLevel trace = TraceLevel.Info;
         public bool iec = false;

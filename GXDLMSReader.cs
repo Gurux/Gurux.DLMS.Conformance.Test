@@ -179,6 +179,10 @@ namespace Gurux.DLMS.Reader
         {
             //Query device information.
             GXSerial serial = Media as GXSerial;
+            if (serial == null)
+            {
+                return;
+            }
             if (UseIec)
             {
                 serial.BaudRate = 300;

@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CTT" xml:space="preserve">
+    <value>Gurux DLMS Conformance Test</value>
+  </data>
+  <data name="InstallManufacturersOnlineTxt" xml:space="preserve">
+    <value>Device Manufacturer settings are not present. Do you want to install them online from Gurux Web?</value>
+  </data>
+  <data name="InvalidASCII" xml:space="preserve">
+    <value>Invalid ASCII characters.</value>
+  </data>
 </root>

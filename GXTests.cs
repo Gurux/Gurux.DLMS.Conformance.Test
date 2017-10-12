@@ -92,6 +92,7 @@ namespace Gurux.DLMS.Conformance.Test
         public static void Basic(GXSettings settings, GXOutput output)
         {
             Reader.GXDLMSReader reader = new Reader.GXDLMSReader(settings.client, settings.media, settings.trace, settings.iec);
+            reader.WaitTime = settings.WaitTime;
             settings.media.Open();
             if (settings.trace > TraceLevel.Error)
             {
@@ -103,7 +104,7 @@ namespace Gurux.DLMS.Conformance.Test
             {
                 Console.WriteLine("Get association view.");
             }
-            reader.GetAssociationView(true);
+            reader.GetAssociationView(false);
             if (settings.client.UseLogicalNameReferencing)
             {
                 output.PreInfo.Add("Testing using Logical Name referencing.");
@@ -310,17 +311,10 @@ namespace Gurux.DLMS.Conformance.Test
                 files.AddRange(GetSNTests());
             }
             //Read additional tests.
-            foreach (string file in files)
+            foreach (string name in files)
             {
                 List<GXDLMSXmlPdu> actions;
-                string name;
-                if ((settings.tests & ConformanceTest.Init) == 0)
-                {
-                    return;
-                }
-
-                name = file;
-                using (Stream stream = typeof(Program).Assembly.GetManifestResourceStream(file))
+                using (Stream stream = typeof(Program).Assembly.GetManifestResourceStream(name))
                 {
                     using (StreamReader sr = new StreamReader(stream))
                     {
@@ -334,6 +328,7 @@ namespace Gurux.DLMS.Conformance.Test
                 try
                 {
                     reader = new Reader.GXDLMSReader(settings.client, settings.media, settings.trace, settings.iec);
+                    reader.WaitTime = settings.WaitTime;
                     settings.media.Open();
                     //Send SNRM if not in xml.
                     if (settings.client.InterfaceType == InterfaceType.HDLC)
@@ -410,6 +405,7 @@ namespace Gurux.DLMS.Conformance.Test
                 try
                 {
                     reader = new Reader.GXDLMSReader(settings.client, settings.media, settings.trace, settings.iec);
+                    reader.WaitTime = settings.WaitTime;
                     settings.media.Open();
                     //Send SNRM if not in xml.
                     if (settings.client.InterfaceType == InterfaceType.HDLC)
