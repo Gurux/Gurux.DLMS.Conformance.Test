@@ -18,7 +18,7 @@
       <Result>
         <Data>
           <Array Qty="*" >
-            <Int32 Value="*" />
+            <None Value="*" />
           </Array>
         </Data>
       </Result>
