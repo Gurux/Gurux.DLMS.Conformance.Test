@@ -86,6 +86,32 @@ namespace Gurux.DLMS.Conformance.Test
             }
             Stream stream = File.Open(file, FileMode.Create);
             writer = new HtmlTextWriter(new StreamWriter(stream));
+            writer.WriteLine("<!DOCTYPE html >");
+            writer.WriteLine("<html>");
+            writer.WriteLine("<style>");
+            writer.WriteLine(".tooltip {");
+            writer.WriteLine("position: relative;");
+            writer.WriteLine("display: inline-block;");
+            writer.WriteLine("border-bottom: 1px dotted black;");
+            writer.WriteLine("}");
+            writer.WriteLine(".tooltip .tooltiptext {");
+            writer.WriteLine("visibility: hidden;");
+            writer.WriteLine("width: 600px;");
+            writer.WriteLine("background-color: Gray;");
+            writer.WriteLine("color: #fff;");
+            writer.WriteLine("text-align: left;");
+            writer.WriteLine("border-radius: 6px;");
+            writer.WriteLine("padding: 5px 0;");
+            /* Position the tooltip */
+            writer.WriteLine("position: absolute;");
+            writer.WriteLine("z-index: 1;");
+            writer.WriteLine("}");
+
+            writer.WriteLine(".tooltip:hover .tooltiptext {");
+            writer.WriteLine("visibility: visible;");
+            writer.WriteLine("}");
+            writer.WriteLine("</style>");
+            writer.WriteLine("<body>");
             writer.Write("<table width=\"100%\">");
             writer.Write("<tr>");
             writer.Write("<td><center><h1>Gurux Conformance Test Report</h1></center></td>");
@@ -141,6 +167,8 @@ namespace Gurux.DLMS.Conformance.Test
                 writer.WriteLine(it);
                 writer.Write("<br/>");
             }
+            writer.WriteLine("</body>");
+            writer.WriteLine("</html>");
             PreInfo.Clear();
             Errors.Clear();
             Warnings.Clear();

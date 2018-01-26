@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Gurux.DLMS.Conformance.Test</RootNamespace>
     <AssemblyName>Gurux.DLMS.Conformance.Test</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
@@ -34,6 +34,7 @@
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -66,7 +67,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>7160E92492265E193B0FA4A89B811452EA7BD3AC</ManifestCertificateThumbprint>
@@ -78,21 +79,17 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gurux.Common, Version=8.1.1709.2601, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Gurux.Common.8.1.1709.2601\lib\portable-win+net35\Gurux.Common.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Gurux.Common, Version=8.1.1801.1201, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Gurux.Common.8.1.1801.1201\lib\portable-win+net40\Gurux.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Gurux.DLMS, Version=8.5.1710.1302, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Gurux.DLMS.8.5.1710.1302\lib\portable-win+net35\Gurux.DLMS.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Gurux.DLMS, Version=8.5.1801.1202, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Gurux.DLMS.8.5.1801.1202\lib\portable-win+net35\Gurux.DLMS.dll</HintPath>
     </Reference>
-    <Reference Include="Gurux.Net, Version=8.1.1710.1001, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Gurux.Net.8.1.1710.1001\lib\portable-win+net35\Gurux.Net.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Gurux.Net, Version=8.1.1801.1201, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Gurux.Net.8.1.1801.1201\lib\portable-win+net40\Gurux.Net.dll</HintPath>
     </Reference>
-    <Reference Include="Gurux.Serial, Version=8.1.1710.1001, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Gurux.Serial.8.1.1710.1001\lib\portable-win+net35\Gurux.Serial.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Gurux.Serial, Version=8.1.1801.1201, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Gurux.Serial.8.1.1801.1201\lib\portable-win+net40\Gurux.Serial.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -131,7 +128,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest">
       <SubType>Designer</SubType>
@@ -183,6 +182,20 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Tests\Objects\AssociationLogicalName.xml" />
+    <EmbeddedResource Include="Tests\Objects\ProfileGeneric.xml" />
+    <EmbeddedResource Include="Tests\Objects\MBusClient.xml" />
+    <EmbeddedResource Include="Tests\Objects\MBusMasterPortSetup.xml" />
+    <EmbeddedResource Include="Tests\Objects\RegisterActivation.xml" />
+    <EmbeddedResource Include="Tests\Objects\SecuritySetup.xml" />
+    <EmbeddedResource Include="Tests\Objects\ImageTransfer.xml" />
+    <EmbeddedResource Include="Tests\Objects\GprsSetup.xml" />
+    <EmbeddedResource Include="Tests\Objects\PPPSetup.xml" />
+    <EmbeddedResource Include="Tests\Objects\Limiter.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\Objects\DisconnectControl.xml" />
+    <EmbeddedResource Include="Tests\Objects\ExtendedRegister.xml" />
     <EmbeddedResource Include="Tests\LN\ConnectLow_InvalidPW.xml" />
     <EmbeddedResource Include="Tests\LN\ConnectNone.xml" />
     <EmbeddedResource Include="Tests\LN\DlmsVersionTooLow.xml" />

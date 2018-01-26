@@ -4,9 +4,10 @@
     <GetRequestNormal>
       <InvokeIdAndPriority Value="193" />
       <AttributeDescriptor>
-        <!--PUSH_SETUP-->
-        <ClassId Value="40" />
-        <InstanceId Value="0000190900FF" />
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
         <AttributeId Value="2" />
       </AttributeDescriptor>
     </GetRequestNormal>
@@ -16,14 +17,7 @@
       <InvokeIdAndPriority Value="193" />
       <Result>
         <Data>
-          <Array Qty="*" >
-            <Structure Qty="4" >
-              <UInt16 Value="*" />
-              <OctetString Value="*" />
-              <Int8 Value="*" />
-              <UInt16 Value="*" />
-            </Structure>
-          </Array>
+          <UInt32 Value="*" />
         </Data>
       </Result>
     </GetResponseNormal>
@@ -32,9 +26,10 @@
     <GetRequestNormal>
       <InvokeIdAndPriority Value="193" />
       <AttributeDescriptor>
-        <!--PUSH_SETUP-->
-        <ClassId Value="40" />
-        <InstanceId Value="0000190900FF" />
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
         <AttributeId Value="3" />
       </AttributeDescriptor>
     </GetRequestNormal>
@@ -44,11 +39,7 @@
       <InvokeIdAndPriority Value="193" />
       <Result>
         <Data>
-          <Structure Qty="3" >
-            <Enum Value="*" />
-            <OctetString Value="*" />
-            <Enum Value="*" />
-          </Structure>
+          <BitString Value="*" />
         </Data>
       </Result>
     </GetResponseNormal>
@@ -57,9 +48,10 @@
     <GetRequestNormal>
       <InvokeIdAndPriority Value="193" />
       <AttributeDescriptor>
-        <!--PUSH_SETUP-->
-        <ClassId Value="40" />
-        <InstanceId Value="0000190900FF" />
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
         <AttributeId Value="4" />
       </AttributeDescriptor>
     </GetRequestNormal>
@@ -69,8 +61,7 @@
       <InvokeIdAndPriority Value="193" />
       <Result>
         <Data>
-          <Array Qty="*" >
-          </Array>
+          <UInt32 Value="*" />
         </Data>
       </Result>
     </GetResponseNormal>
@@ -79,9 +70,10 @@
     <GetRequestNormal>
       <InvokeIdAndPriority Value="193" />
       <AttributeDescriptor>
-        <!--PUSH_SETUP-->
-        <ClassId Value="40" />
-        <InstanceId Value="0000190900FF" />
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
         <AttributeId Value="5" />
       </AttributeDescriptor>
     </GetRequestNormal>
@@ -91,7 +83,7 @@
       <InvokeIdAndPriority Value="193" />
       <Result>
         <Data>
-          <UInt16 Value="*" />
+          <Boolean Value="*" />
         </Data>
       </Result>
     </GetResponseNormal>
@@ -100,9 +92,10 @@
     <GetRequestNormal>
       <InvokeIdAndPriority Value="193" />
       <AttributeDescriptor>
-        <!--PUSH_SETUP-->
-        <ClassId Value="40" />
-        <InstanceId Value="0000190900FF" />
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
         <AttributeId Value="6" />
       </AttributeDescriptor>
     </GetRequestNormal>
@@ -112,7 +105,7 @@
       <InvokeIdAndPriority Value="193" />
       <Result>
         <Data>
-          <UInt8 Value="*" />
+          <Enum Value="*" />
         </Data>
       </Result>
     </GetResponseNormal>
@@ -121,9 +114,10 @@
     <GetRequestNormal>
       <InvokeIdAndPriority Value="193" />
       <AttributeDescriptor>
-        <!--PUSH_SETUP-->
-        <ClassId Value="40" />
-        <InstanceId Value="0000190900FF" />
+        <!--IMAGE_TRANSFER-->
+        <ClassId Value="18" />
+        <!--0.0.44.0.0.255-->
+        <InstanceId Value="00002C0000FF" />
         <AttributeId Value="7" />
       </AttributeDescriptor>
     </GetRequestNormal>
@@ -133,7 +127,13 @@
       <InvokeIdAndPriority Value="193" />
       <Result>
         <Data>
-          <UInt16 Value="*" />
+          <Array Qty="*" >
+            <Structure Qty="3" >
+              <UInt32 Value="*" />
+              <OctetString Value="*" />
+              <OctetString Value="*" />
+            </Structure>
+          </Array>
         </Data>
       </Result>
     </GetResponseNormal>

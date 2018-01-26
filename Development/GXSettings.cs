@@ -82,6 +82,10 @@ namespace Gurux.DLMS.Conformance.Test
         /// Excluded object types.
         /// </summary>
         public List<ObjectType> excludedObjects = new List<ObjectType>();
+        /// <summary>
+        /// OBIS code converter.
+        /// </summary>
+        public GXDLMSConverter converter = new GXDLMSConverter();
 
         internal static int GetParameters(string[] args, GXSettings settings)
         {

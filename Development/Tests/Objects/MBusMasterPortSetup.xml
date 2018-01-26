@@ -4,10 +4,10 @@
     <GetRequestNormal>
       <InvokeIdAndPriority Value="193" />
       <AttributeDescriptor>
-        <!--SPECIAL_DAYS_TABLE-->
-        <ClassId Value="11" />
-        <!--0.0.11.0.0.255-->
-        <InstanceId Value="00000B0000FF" />
+        <!--MBUS_MASTER_PORT_SETUP-->
+        <ClassId Value="74" />
+        <!--0.0.24.6.0.255-->
+        <InstanceId Value="0000180600FF" />
         <AttributeId Value="2" />
       </AttributeDescriptor>
     </GetRequestNormal>
@@ -17,13 +17,7 @@
       <InvokeIdAndPriority Value="193" />
       <Result>
         <Data>
-          <Array Qty="*" >
-            <Structure Qty="3" >
-              <UInt16 Value="*" />
-              <OctetString Value="*" />
-              <UInt8 Value="*" />
-            </Structure>
-          </Array>
+          <Enum Value="*" />
         </Data>
       </Result>
     </GetResponseNormal>

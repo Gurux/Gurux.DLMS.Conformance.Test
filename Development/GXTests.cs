@@ -43,6 +43,7 @@ using System.IO;
 using System.Xml;
 using Gurux.Common;
 using Gurux.DLMS.Reader;
+using System.Text;
 
 namespace Gurux.DLMS.Conformance.Test
 {
@@ -89,11 +90,21 @@ namespace Gurux.DLMS.Conformance.Test
         /// </summary>
         /// <param name="settings">Settings.</param>
         /// <param name="output">Generated output.</param>
-        public static void Basic(GXSettings settings, GXOutput output)
+        public static bool Basic(GXSettings settings, GXOutput output)
         {
             Reader.GXDLMSReader reader = new Reader.GXDLMSReader(settings.client, settings.media, settings.trace, settings.iec);
             reader.WaitTime = settings.WaitTime;
-            settings.media.Open();
+            try
+            {
+                settings.media.Open();
+            }
+            catch (System.Net.Sockets.SocketException e)
+            {
+                //If failed to make connection to the meter.
+                output.Errors.Add("Failed to connect to the meter: " + e.Message);
+                output.MakeReport();
+                return false;
+            }
             if (settings.trace > TraceLevel.Error)
             {
                 Console.WriteLine("------------------------------------------------------------");
@@ -145,11 +156,11 @@ namespace Gurux.DLMS.Conformance.Test
             {
                 if (it.Description == "Invalid")
                 {
-                    output.Errors.Add("Invalid OBIS name " + it.LogicalName + " for " + it.ObjectType + ".");
+                    output.Errors.Add("Invalid OBIS code " + it.LogicalName + " for <a target=\"_blank\" href=http://www.gurux.fi/" + it.GetType().FullName + ">" + it.ObjectType + "</a>.");
                     if (settings.trace > TraceLevel.Warning)
                     {
                         Console.WriteLine("------------------------------------------------------------");
-                        Console.WriteLine(it.LogicalName + ": Invalid OBIS name.");
+                        Console.WriteLine(it.LogicalName + ": Invalid OBIS code.");
                     }
                 }
             }
@@ -206,6 +217,27 @@ namespace Gurux.DLMS.Conformance.Test
                     {
                         Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
                         Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            List<ObjectType> unknownDataTypes = new List<ObjectType>();
+            foreach (GXDLMSObject o in settings.client.Objects)
+            {
+                if (!unknownDataTypes.Contains(o.ObjectType))
+                {
+                    bool found = false;
+                    foreach (KeyValuePair<string, List<GXDLMSXmlPdu>> t in cosemTests)
+                    {
+                        if (o.ObjectType.ToString() == t.Key)
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found)
+                    {
+                        unknownDataTypes.Add(o.ObjectType);
+                        output.Warnings.Add("<a target=\"_blank\" href=http://www.gurux.fi/" + o.GetType().FullName + ">" + o.ObjectType + "</a> is not tested.");
                     }
                 }
             }
@@ -291,6 +323,49 @@ namespace Gurux.DLMS.Conformance.Test
             reader.WaitTime = wt;
             reader.RetryCount = rc;
             output.MakeReport();
+            return true;
+        }
+
+        /// <summary>
+        /// Connect to the meter and try to send password in two part.
+        /// </summary>
+        /// <param name="settings">Settings.</param>
+        /// <param name="output">Generated output.</param>
+        public static void PasswordInTwoPart(GXSettings settings, GXOutput output)
+        {
+            if (settings.client.InterfaceType == InterfaceType.HDLC)
+            {
+                Reader.GXDLMSReader reader = new Reader.GXDLMSReader(settings.client, settings.media, settings.trace, settings.iec);
+                //GXDLMSClient cl = new GXDLMSClient(true, 16, 1, Authentication.Low, null, InterfaceType.HDLC);
+                //Reader.GXDLMSReader reader = new Reader.GXDLMSReader(cl, settings.media, settings.trace, settings.iec);
+                reader.WaitTime = settings.WaitTime;
+                settings.media.Open();
+                settings.client.Limits.MaxInfoRX = settings.client.Limits.MaxInfoTX = 64;
+                reader.SNRMRequest();
+                settings.client.Authentication = Authentication.Low;
+                settings.client.Password = ASCIIEncoding.ASCII.GetBytes("Gurux");
+                reader.AarqRequest();
+            }
+        }
+
+        /// <summary>
+        /// Connect to the meter and try to send HDLC frame that is too big.
+        /// </summary>
+        /// <param name="settings">Settings.</param>
+        /// <param name="output">Generated output.</param>
+        public static void InvalidHdlcFrame(GXSettings settings, GXOutput output)
+        {
+            if (settings.client.InterfaceType == InterfaceType.HDLC)
+            {
+                Reader.GXDLMSReader reader = new Reader.GXDLMSReader(settings.client, settings.media, settings.trace, settings.iec);
+                reader.WaitTime = settings.WaitTime;
+                settings.media.Open();
+                settings.client.Limits.MaxInfoRX = settings.client.Limits.MaxInfoTX = 64;
+                reader.SNRMRequest();
+                byte[] data = GXDLMSTranslator.HexToBytes("7E A0 41 03 21 10 B1 EA E6 E6 00 60 33 A1 09 06 07 60 85 74 05 08 01 01 8A 02 07 80 8B 07 60 85 74 05 08 02 01 AC 07 80 05 47 75 72 75 78 BE 10 04 0E 01 00 00 00 06 5F 1F 04 00 00 1E 1D FF FF ED 2C 7E");
+                GXReplyData reply = new GXReplyData();
+                reader.ReadDataBlock(data, reply);
+            }
         }
 
         /// <summary>
@@ -298,8 +373,11 @@ namespace Gurux.DLMS.Conformance.Test
         /// </summary>
         /// <param name="settings">Settings.</param>
         /// <param name="output">Generated output.</param>
-        public static void Init(GXSettings settings, GXOutput output)
+        public static bool Init(GXSettings settings, GXOutput output)
         {
+            //            PasswordInTwoPart(settings, output);
+            //            InvalidHdlcFrame(settings, output);
+
             List<string> files = new List<string>();
             Reader.GXDLMSReader reader = null;
             if (settings.client.UseLogicalNameReferencing)
@@ -329,7 +407,17 @@ namespace Gurux.DLMS.Conformance.Test
                 {
                     reader = new Reader.GXDLMSReader(settings.client, settings.media, settings.trace, settings.iec);
                     reader.WaitTime = settings.WaitTime;
-                    settings.media.Open();
+                    try
+                    {
+                        settings.media.Open();
+                    }
+                    catch (System.Net.Sockets.SocketException e)
+                    {
+                        //If failed to make connection to the meter.
+                        output.Errors.Add("Failed to connect to the meter: " + e.Message);
+                        output.MakeReport();
+                        return false;
+                    }
                     //Send SNRM if not in xml.
                     if (settings.client.InterfaceType == InterfaceType.HDLC)
                     {
@@ -367,6 +455,7 @@ namespace Gurux.DLMS.Conformance.Test
                 }
             }
             output.MakeReport();
+            return true;
         }
 
         /// <summary>
@@ -374,7 +463,7 @@ namespace Gurux.DLMS.Conformance.Test
         /// </summary>
         /// <param name="settings">Settings.</param>
         /// <param name="output">Generated output.</param>
-        public static void Extra(GXSettings settings, GXOutput output)
+        public static bool Extra(GXSettings settings, GXOutput output)
         {
             List<string> files = new List<string>();
             FileAttributes attr = File.GetAttributes(settings.path);
@@ -406,7 +495,17 @@ namespace Gurux.DLMS.Conformance.Test
                 {
                     reader = new Reader.GXDLMSReader(settings.client, settings.media, settings.trace, settings.iec);
                     reader.WaitTime = settings.WaitTime;
-                    settings.media.Open();
+                    try
+                    {
+                        settings.media.Open();
+                    }
+                    catch (System.Net.Sockets.SocketException e)
+                    {
+                        //If failed to make connection to the meter.
+                        output.Errors.Add("Failed to connect to the meter: " + e.Message);
+                        output.MakeReport();
+                        return false;
+                    }
                     //Send SNRM if not in xml.
                     if (settings.client.InterfaceType == InterfaceType.HDLC)
                     {
@@ -444,6 +543,14 @@ namespace Gurux.DLMS.Conformance.Test
                 }
             }
             output.MakeReport();
+            return true;
+        }
+
+        private static string GetLogicalName(string ln)
+        {
+            byte[] buff = GXCommon.HexToBytes(ln);
+            return (buff[0] & 0xFF) + "." + (buff[1] & 0xFF) + "." + (buff[2] & 0xFF) + "." +
+                   (buff[3] & 0xFF) + "." + (buff[4] & 0xFF) + "." + (buff[5] & 0xFF);
         }
 
         private static void Execute(GXSettings settings, GXDLMSReader reader, string name, List<GXDLMSXmlPdu> actions, GXOutput output)
@@ -452,6 +559,7 @@ namespace Gurux.DLMS.Conformance.Test
             string ln = null;
             int index = 0;
             ObjectType ot = ObjectType.None;
+            List<KeyValuePair<ObjectType, int>> succeeded = new List<KeyValuePair<ObjectType, int>>();
             foreach (GXDLMSXmlPdu it in actions)
             {
                 if (it.Command == Command.Snrm && settings.client.InterfaceType == InterfaceType.WRAPPER)
@@ -476,7 +584,8 @@ namespace Gurux.DLMS.Conformance.Test
                     {
                         ot = (ObjectType)int.Parse(i.SelectNodes("AttributeDescriptor/ClassId")[0].Attributes["Value"].Value);
                         index = int.Parse(i.SelectNodes("AttributeDescriptor/AttributeId")[0].Attributes["Value"].Value);
-                        ln = i.SelectNodes("AttributeDescriptor/InstanceId")[0].Attributes["Value"].Value;
+                        ln = (i.SelectNodes("AttributeDescriptor/InstanceId")[0].Attributes["Value"].Value);
+                        ln = GetLogicalName(ln);
                     }
                     reply.Clear();
                     if (settings.trace > TraceLevel.Warning)
@@ -501,7 +610,15 @@ namespace Gurux.DLMS.Conformance.Test
                         }
                         else
                         {
-                            output.Errors.Add("Cosem object " + ot.ToString() + " " + ln + " attribute " + index + " is invalid.");
+                            //   output.Errors.Add("<div class=\"description\">\r\n");
+                            output.Errors.Add("<a target=\"_blank\" href=http://www.gurux.fi/Gurux.DLMS.Objects.GXDLMS" + ot + ">" + ot + "</a> " + ln + " attribute " + index + " is <div class=\"tooltip\">invalid.");
+                            output.Errors.Add("<span class=\"tooltiptext\">");
+                            output.Errors.Add("Expected:</b><br/>");
+                            output.Errors.Add(it.PduAsXml.Replace("<", "&lt;").Replace(">", "&gt;").Replace("\r\n", "<br/>"));
+                            output.Errors.Add("<br/><b>Actual:</b><br/>");
+                            output.Errors.Add(reply.ToString().Replace("<", "&lt;").Replace(">", "&gt;").Replace("\r\n", "<br/>"));
+                            output.Errors.Add("</span></div>");
+                            //   output.Errors.Add("</div>");
                         }
                         Console.WriteLine("------------------------------------------------------------");
                         Console.WriteLine("Test" + name + "failed. Invalid reply: " + string.Join("\n", list.ToArray()));
@@ -514,7 +631,7 @@ namespace Gurux.DLMS.Conformance.Test
                         }
                         else
                         {
-                            output.Info.Add("Cosem object " + ot.ToString() + " " + ln + " attribute " + index + " is valid.");
+                            succeeded.Add(new KeyValuePair<ObjectType, int>(ot, index));
                         }
                     }
                     if (settings.trace > TraceLevel.Warning)
@@ -523,6 +640,19 @@ namespace Gurux.DLMS.Conformance.Test
                         Console.WriteLine(reply.ToString());
                     }
                 }
+            }
+            if (succeeded.Count != 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append("<div class=\"tooltip\">" + ln);
+                sb.Append("<span class=\"tooltiptext\">");
+                foreach (var it in succeeded)
+                {
+                    sb.Append("Index: " + it.Value + "<br/>");
+                }
+                sb.Append("</span></div>");
+                sb.Append("&nbsp;" + settings.converter.GetDescription(ln, succeeded[0].Key)[0] + "&nbsp;" + "<a target=\"_blank\" href=http://www.gurux.fi/Gurux.DLMS.Objects.GXDLMS" + ot + ">" + ot + "</a>."); 
+                output.Info.Add(sb.ToString());
             }
         }
 

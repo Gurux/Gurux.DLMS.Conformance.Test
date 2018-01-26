@@ -50,6 +50,7 @@ namespace Gurux.DLMS.Conformance.Test
             GXOutput ouput = new Test.GXOutput();
             GXSettings settings = new GXSettings();
             List<KeyValuePair<GXDLMSXmlPdu, List<string>>> differences = new List<KeyValuePair<GXDLMSXmlPdu, List<string>>>();
+            GXDLMSConverter c = new GXDLMSConverter();
             try
             {
                 if (args.Length == 0)
